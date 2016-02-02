@@ -1,5 +1,12 @@
 mkdir asin
 if [ $(find asin -type f | wc -l) -lt "20" ]; then
+  for f in asin/*.jpg; do 
+  if [ $(exiftool -s3 -ImageWidth "$f") -z "$VAR" ]; then
+  rm -f "$f"
+  else
+  clear
+  fi
+  done
   cat bingtitle.py > deletetitle.py
   cat bingimage.py > deleteimage.py
   sed -i 's|bingurlan|urlbing|g' delete*
