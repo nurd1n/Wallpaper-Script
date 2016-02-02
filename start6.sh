@@ -1,5 +1,5 @@
 #delete empty folder
-find ./image/ -type d -empty -exec rmdir {} \;
+find ./image/* -type d -empty -exec rmdir {} \;
 #folder, untuk judul artikel
 find ./image/* -type d | cut -c 9- > /home/wallpaper/artikel/data/folder.txt
 ./isifolder.sh
