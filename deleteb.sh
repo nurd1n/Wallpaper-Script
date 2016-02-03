@@ -1,1 +1,1 @@
-<dl class='gallery-item'><a href="http://www.domain.com/judulstrip/gambar2" target="_blank"><img src="http://www.domain.com/image/gambar1" alt="judulgambar, judul1" title="judul1, judulgambar"/></a></dl>
+<dl class='gallery-item'><a href="http://www.domain.com/judulstrip/gambar2" target="_blank"><img src="http://www.domain.com/image/gambar2-150x150.jpg" alt="judulgambar, judul1" title="judul1, judulgambar"/></a></dl>
