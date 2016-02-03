@@ -98,7 +98,7 @@ echo "cat data/sql2 | sed -e 's|judul2|$(cat deletejudul2.txt)|g' >> deletesql.t
 echo "$(cat deletesql.txt)" | awk 1 ORS='' | sed '$a\' > deletemysql.sql
 # upload image
 cd /home/domain/wordpress
-echo "wp media import /home/wallpaper/attachment/done/title1/title2 --post_id=$(cat /home/wallpaper/attachment/id/title1) --porcelain --allow-root > /home/wallpaper/attachment/deleteid.txt" | bash -
+echo "wp media import /home/wallpaper/attachment/done/title1/title2 --post_id=$(cat /home/wallpaper/attachment/id/title1.txt) --porcelain --allow-root > /home/wallpaper/attachment/deleteid.txt" | bash -
 # generate thumbnail
 echo "wp media regenerate $(cat /home/wallpaper/attachment/deleteid.txt) --yes --allow-root" | bash -
 # mysql
