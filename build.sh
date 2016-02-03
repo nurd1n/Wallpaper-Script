@@ -15,10 +15,9 @@ cat deletegambar1.txt | sed -e 's/.jpg//g' -e 's/-/ /g' -e 's/.*/\L&/; s/[a-z]*/
 echo "cat a.html | sed -e 's/judulstrip/$(cat deletejudulstrip.txt)/g' -e 's/gambar1/$(cat deletegambar1.txt)/g' -e 's/gambar2/$(cat deletegambar2.txt)/g' -e 's/judulgambar/$(cat judulgambar.txt)/g' -e 's/judul1/$(cat deletejudul1.txt)/g' > deletegambar1.html" | bash -
 # ambil list gambar untuk galery
 cat file/title.txt | sed "1d" | awk 'FNR==0{print ""}{print}' | while read line; do
-    echo "$line" > deletegambar1.txt
     echo "$line" | sed -e 's/.jpg//g' > deletegambar2.txt
     echo "echo '$line' | sed -e 's/.jpg//g' -e 's/-/ /g' -e 's/.*/\L&/; s/[a-z]*/\u&/g' > deletejudulgambar.txt" | bash -
-    echo "cat b.html | sed -e 's/judulstrip/$(cat deletejudulstrip.txt)/g' -e 's/gambar1/$(cat deletegambar1.txt)/g' -e 's/gambar2/$(cat deletegambar2.txt)/g' -e 's/judulgambar/$(cat deletejudulgambar.txt)/g' -e 's/judul1/$(cat deletejudul1.txt)/g' >> deletegallery.html" | bash -
+    echo "cat b.html | sed -e 's/judulstrip/$(cat deletejudulstrip.txt)/g' -e 's/gambar2/$(cat deletegambar2.txt)/g' -e 's/judulgambar/$(cat deletejudulgambar.txt)/g' -e 's/judul1/$(cat deletejudul1.txt)/g' >> deletegallery.html" | bash -
 done
 # tambah clear di line 5
 sed -e "5 a <p style='clear: both' />" -e "10 a <p style='clear: both' />" -e "15 a <p style='clear: both' />" -e "20 a <p style='clear: both' />" -e "$ a <p style='clear: both' />" deletegallery.html > deletegallery2.html
