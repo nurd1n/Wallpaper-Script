@@ -105,6 +105,8 @@ echo "$(cat deletesql.txt)" | awk 1 ORS='' | sed '$a\' > deletemysql.sql
 # mysql query
 cd /home/hometiful/wordpress
 wp db query --allow-root < /home/wallpaper/attachment/deletemysql.sql
+# search & replace
+echo "wp search-replace 'http://www.domain.com/$(cat /home/wallpaper/attachment/deletejudul1strip.txt)/' 'http://www.domain.com/$(cat /home/wallpaper/attachment/id/title1.txt)/$(cat /home/wallpaper/attachment/deletejudul1strip.txt)/' wp_posts --allow-root" | bash -
 # delete & clear history
 cd /home/wallpaper/attachment
 find . -maxdepth 1 -type f -name "delete*" -delete
