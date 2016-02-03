@@ -25,31 +25,31 @@ sed -e "5 a <p style='clear: both' />" -e "10 a <p style='clear: both' />" -e "1
 # tambah awalan dan akhiran serta ganti new line dengan br
 awk 'FNR==1{print "<div id='gallery-1'>"}{print}' deletegallery2.html | sed '$ a </div>' | tr '\n' ' ' > deletegallery.html
 # spin article
-echo "cat spin/Par1/$(shuf -i 1-5 -n 1)" > deletepar.txt
+echo "cat spin/par1/$(shuf -i 1-5 -n 1)" > deletepar.txt
   echo "$(cat deletepar.txt)/1 | shuf -n 1 >> deletepar1a.txt" | bash -
   echo "$(cat deletepar.txt)/2 | shuf -n 1 >> deletepar1a.txt" | bash -
   echo "$(cat deletepar.txt)/3 | shuf -n 1 >> deletepar1a.txt" | bash -
   echo "$(cat deletepar.txt)/4 | shuf -n 1 >> deletepar1a.txt" | bash -  
   echo "$(cat deletepar.txt)/5 | shuf -n 1 >> deletepar1a.txt" | bash -  
-echo "cat spin/Par2/$(shuf -i 1-5 -n 1)" > deletepar.txt
+echo "cat spin/par2/$(shuf -i 1-5 -n 1)" > deletepar.txt
   echo "$(cat deletepar.txt)/1 | shuf -n 1 >> deletepar2a.txt" | bash -
   echo "$(cat deletepar.txt)/2 | shuf -n 1 >> deletepar2a.txt" | bash -
   echo "$(cat deletepar.txt)/3 | shuf -n 1 >> deletepar2a.txt" | bash -
   echo "$(cat deletepar.txt)/4 | shuf -n 1 >> deletepar2a.txt" | bash -  
   echo "$(cat deletepar.txt)/5 | shuf -n 1 >> deletepar2a.txt" | bash -  
-echo "cat spin/Par3/$(shuf -i 1-5 -n 1)" > deletepar.txt
+echo "cat spin/par3/$(shuf -i 1-5 -n 1)" > deletepar.txt
   echo "$(cat deletepar.txt)/1 | shuf -n 1 >> deletepar3a.txt" | bash -
   echo "$(cat deletepar.txt)/2 | shuf -n 1 >> deletepar3a.txt" | bash -
   echo "$(cat deletepar.txt)/3 | shuf -n 1 >> deletepar3a.txt" | bash -
   echo "$(cat deletepar.txt)/4 | shuf -n 1 >> deletepar3a.txt" | bash -  
   echo "$(cat deletepar.txt)/5 | shuf -n 1 >> deletepar3a.txt" | bash -  
-echo "cat spin/Par4/$(shuf -i 1-5 -n 1)" > deletepar.txt
+echo "cat spin/par4/$(shuf -i 1-5 -n 1)" > deletepar.txt
   echo "$(cat deletepar.txt)/1 | shuf -n 1 >> deletepar4a.txt" | bash -
   echo "$(cat deletepar.txt)/2 | shuf -n 1 >> deletepar4a.txt" | bash -
   echo "$(cat deletepar.txt)/3 | shuf -n 1 >> deletepar4a.txt" | bash -
   echo "$(cat deletepar.txt)/4 | shuf -n 1 >> deletepar4a.txt" | bash -  
   echo "$(cat deletepar.txt)/5 | shuf -n 1 >> deletepar4a.txt" | bash -  
-echo "cat spin/Par5/$(shuf -i 1-5 -n 1)" > deletepar.txt
+echo "cat spin/par5/$(shuf -i 1-5 -n 1)" > deletepar.txt
   echo "$(cat deletepar.txt)/1 | shuf -n 1 >> deletepar5a.txt" | bash -
   echo "$(cat deletepar.txt)/2 | shuf -n 1 >> deletepar5a.txt" | bash -
   echo "$(cat deletepar.txt)/3 | shuf -n 1 >> deletepar5a.txt" | bash -
