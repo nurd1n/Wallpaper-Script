@@ -27,18 +27,18 @@ sed -e "5 a <p style='clear: both' />" -e "10 a <p style='clear: both' />" -e "1
 # tambah awalan dan akhiran serta ganti new line dengan br
 awk 'FNR==1{print "<div id='gallery-1'>"}{print}' deletegallery2.html | sed '$ a </div>' | tr '\n' ' ' > deletegallery.html
 # spin article
-echo "cat spin/Par1/1 | shuf -n 1" | bash - > deletepar1a.txt
-echo "cat spin/Par1/2 | shuf -n 1" | bash - >> deletepar1a.txt
-echo "cat spin/Par1/3 | shuf -n 1" | bash - >> deletepar1a.txt
-echo "cat spin/Par1/4 | shuf -n 1" | bash - >> deletepar1a.txt
-echo "cat spin/Par1/5 | shuf -n 1" | bash - >> deletepar1a.txt
+echo "cat spin/par1/1 | shuf -n 1" | bash - > deletepar1a.txt
+echo "cat spin/par1/2 | shuf -n 1" | bash - >> deletepar1a.txt
+echo "cat spin/par1/3 | shuf -n 1" | bash - >> deletepar1a.txt
+echo "cat spin/par1/4 | shuf -n 1" | bash - >> deletepar1a.txt
+echo "cat spin/par1/5 | shuf -n 1" | bash - >> deletepar1a.txt
 cat deletepar1a.txt | awk 1 ORS=' ' | sed -e 's/^/<div style="text-align: justify">/' -e 's/$/\<\/div\>/' > deletepar1.txt
-echo "cat spin/Par2/1 | shuf -n 1" | bash - > deletepar2a.txt
-echo "cat spin/Par2/2 | shuf -n 1" | bash - >> deletepar2a.txt
-echo "cat spin/Par2/3 | shuf -n 1" | bash - >> deletepar2a.txt
+echo "cat spin/par2/1 | shuf -n 1" | bash - > deletepar2a.txt
+echo "cat spin/par2/2 | shuf -n 1" | bash - >> deletepar2a.txt
+echo "cat spin/par2/3 | shuf -n 1" | bash - >> deletepar2a.txt
 cat deletepar2a.txt | awk 1 ORS=' ' | sed -e 's/^/<div style="text-align: justify">/' -e 's/$/\<\/div\>/' > deletepar2.txt
-echo "cat spin/Par3/1 | shuf -n 1" | bash - > deletepar3a.txt
-echo "cat spin/Par3/2 | shuf -n 1" | bash - >> deletepar3a.txt
+echo "cat spin/par3/1 | shuf -n 1" | bash - > deletepar3a.txt
+echo "cat spin/par3/2 | shuf -n 1" | bash - >> deletepar3a.txt
 cat deletepar3a.txt | awk 1 ORS=' ' | sed -e 's/^/<div style="text-align: justify">/' -e 's/$/\<\/div\>/' > deletepar3.txt
 # shuffle templates
 echo "cat template/$(shuf -i 1-3 -n 1)" | bash - | bash -
