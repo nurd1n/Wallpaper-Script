@@ -108,5 +108,6 @@ wp db query --allow-root < /home/wallpaper/attachment/deletemysql.sql
 # delete & clear history
 cd /home/wallpaper/attachment
 find . -maxdepth 1 -type f -name "delete*" -delete
+find ./done/title1/* -maxdepth 1 -type f -name "*.jpg_original" -delete
 history -c
 clear
