@@ -86,22 +86,24 @@ sed -i 's/  / /g' deletekeyword1.txt
 sed -e 's/,,/,/g' -e 's/, ,/,/g' -e 's/,,/,/g' -e 's/ , /, /g' deletekeyword1.txt | sed 's/.$//' | sed 's/.$//' > deletetags2.txt
 echo "exiftool -Title=\"$(cat deletejudul2.txt) - $(cat deletejudul1.txt)\" -Author=\"$(cat deleteauthor1.txt)\" -Description=\"The picture/image of $(cat deletejudul2.txt) - $(cat deletejudul1.txt)\" -Keyword=\"$(cat deletejudul2.txt), $(cat deletejudul1.txt), $(cat deletetags2.txt)\" -Copyright=\"Source http://www.domain.com/image/title2\" done/title1/title2" | bash -
 # sitemap
-echo "cat data/sitemap | sed -e 's|judul1|$(< \deletejudul1strip.txt)|g' -e 's|judul2|$(< \deletejudul2strip.txt)|g' -e 's|tanggal|$(< \deletetanggal.txt)|g' -e 's|waktu|$(< \deletewaktu.txt)|g' >> /home/domain/wallpaper/sitemap-attachment.xml" | bash -
+echo "cat data/sitemap | sed -e 's|judul1|$(< \deletejudul1strip.txt)|g' -e 's|judul2|$(< \deletejudul2strip.txt)|g' -e 's|tanggal|$(< \deletetanggal.txt)|g' -e 's|waktu|$(< \deletewaktu.txt)|g' >> /home/domain/wordpress/sitemap-attachment.xml" | bash -
 # sql file 1
 echo "cat data/sql1 | sed -e 's|author2|$(cat deleteauthor2.txt)|g' -e 's|tanggal|$(cat deletetanggal.txt)|g' -e 's|waktu|$(cat deletewaktu.txt)|g' >> deletesql.txt" | bash -
 # input description
 sed -i "s/'/''/g" deletedes.txt
 echo "cat deletedes.txt | awk 1 ORS='<br/>' | sed -e 's|judul1|$(cat deletejudul1.txt)|g' -e 's|judulstrip1|$(< \deletejudul1strip.txt)|g' -e 's|judul2|$(cat deletejudul2.txt)|g' -e 's|author1|$(cat deleteauthor1.txt)|g' -e 's|tanggalwaktu|$(cat deletetanggalwaktu.txt)|g' -e 's|panjang1|$(cat deletepanjang1.txt)|g' -e 's|lebar1|$(cat deletelebar1.txt)|g' -e 's|total1|$(cat deletetotal1.txt)|g' -e 's|judul3|$(cat deletejudul32.txt)|g' -e 's|tags1|$(cat deletetags1.txt)|g' >> deletesql.txt" | bash -
-# sql file 2
-echo "cat data/sql2 | sed -e 's|judul2|$(cat deletejudul2.txt)|g' >> deletesql.txt" | bash -
-# mysql
-echo "$(cat deletesql.txt)" | awk 1 ORS='' | sed '$a\' > deletemysql.sql
 # upload image
 cd /home/domain/wordpress
 echo "wp media import /home/wallpaper/attachment/done/title1/title2 --post_id=$(cat /home/wallpaper/attachment/id/title1.txt) --porcelain --allow-root > /home/wallpaper/attachment/deleteid.txt" | bash -
 # generate thumbnail
 echo "wp media regenerate $(cat /home/wallpaper/attachment/deleteid.txt) --yes --allow-root" | bash -
+# sql file 2
+cd /home/wallpaper/attachment
+echo "cat data/sql2 | sed -e 's|judul2|$(cat deletejudul2.txt)|g' >> deletesql.txt" | bash -
 # mysql
+echo "$(cat deletesql.txt)" | awk 1 ORS='' | sed '$a\' > deletemysql.sql
+# mysql query
+cd /home/hometiful/wordpress
 wp db query --allow-root < /home/wallpaper/attachment/deletemysql.sql
 # delete & clear history
 cd /home/wallpaper/attachment
