@@ -99,7 +99,7 @@ echo "wp media import /home/wallpaper/attachment/done/title1/title2 --post_id=$(
 echo "wp media regenerate $(cat /home/wallpaper/attachment/deleteid.txt) --yes --allow-root" | bash -
 # sql file 2
 cd /home/wallpaper/attachment
-echo "cat data/sql2 | sed -e 's|judul2|$(cat deletejudul2.txt)|g' >> deletesql.txt" | bash -
+echo "cat data/sql2 | sed -e 's|judul2|$(cat deletejudul2.txt)|g' -e 's|judulstrip2|$(cat deletejudul2strip.txt)|g' -e 's|gantiparent|$(cat id/title1.txt)|g' -e 's|gantiid|$(cat deleteid.txt)|g' >> deletesql.txt" | bash -
 # mysql
 echo "$(cat deletesql.txt)" | awk 1 ORS='' | sed '$a\' > deletemysql.sql
 # mysql query
