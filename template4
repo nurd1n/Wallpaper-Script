@@ -1,0 +1,10 @@
+echo "$(cat deletepar1.txt)" >> deletedes.txt
+echo "$(cat deletepar2.txt)" >> deletedes.txt
+echo '[the_ad_placement id="2"]' >> deletedes.txt
+echo "$(cat deletegambar1.html)"  >> deletedes.txt
+echo '[the_ad_placement id="1"]<br/>' >> deletedes.txt
+echo "$(cat deletepar3.txt)" >> deletedes.txt
+echo "$(cat deletegallery.html)" >> deletedes.txt
+echo '[the_ad_placement id="3"]' >> deletedes.txt
+echo "$(cat deletepar4.txt)" >> deletedes.txt
+echo "$(cat deletepar5.txt)" >> deletedes.txt
