@@ -93,7 +93,7 @@ echo "$(cat deleteauthor1.txt)" >> delete.csv
 # shuffle id number
 echo $(($RANDOM % 10000)) >> delete.csv
 # ganti new line dengan ;
-echo $(awk 'NR > 1{print line";"}{line=$0;}END{print $0""}' delete.csv) >> /home/domain/wordpress/image/wpallimport/files/wordpress.csv
+echo $(awk 'NR > 1{print line";;;"}{line=$0;}END{print $0""}' delete.csv) >> /home/domain/wordpress/image/wpallimport/files/wordpress.csv
 # delete & clear history
 find . -maxdepth 1 -type f -name "delete*" -delete
 history -c
