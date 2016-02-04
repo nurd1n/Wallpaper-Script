@@ -83,7 +83,7 @@ sed -e 's/,,/,/g' -e 's/, ,/,/g' -e 's/,,/,/g' -e 's/ , /, /g' deletekeyword.txt
 # shuffle author
 echo "$(shuf -n 1 data/author.txt)" > deleteauthor1.txt
 # input description
-echo "sed -e 's/judul1/$(cat deletejudul1.txt)/g' -e 's/total1/$(cat deletetotal1.txt)/g' -e 's/category1/$(cat deletecategory1.txt)/g' -e 's/author1/$(cat deleteauthor1.txt)/g' -e 's/tags1/$(cat deletetags1.txt)/g' deletedes.txt | awk 1 ORS='<br/>' >> delete.csv" | bash -
+echo "sed -e 's/judul1/$(cat deletejudul1.txt)/g' -e 's/total1/$(cat deletetotal1.txt)/g' -e 's/category1/$(cat deletecategory1.txt)/g' -e 's/author1/$(cat deleteauthor1.txt)/g' -e 's/tags1/$(cat deletetags1.txt)/g' deletedes.txt | awk 1 ORS='<br/>' | sed 's/|/;/g' >> delete.csv" | bash -
 # input category
 echo ";$(cat deletecategory1.txt)" >> delete.csv
 # input tags
@@ -93,7 +93,7 @@ echo "$(cat deleteauthor1.txt)" >> delete.csv
 # shuffle id number
 echo $(($RANDOM % 10000)) >> delete.csv
 # ganti new line dengan ;
-echo $(awk 'NR > 1{print line";|;"}{line=$0;}END{print $0""}' delete.csv) >> /home/domain/wordpress/image/wpallimport/files/wordpress.csv
+echo $(awk 'NR > 1{print line"|"}{line=$0;}END{print $0""}' delete.csv) >> /home/domain/wordpress/image/wpallimport/files/wordpress.csv
 # delete & clear history
 find . -maxdepth 1 -type f -name "delete*" -delete
 history -c
