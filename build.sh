@@ -103,7 +103,7 @@ echo "cat data/sql2 | sed -e 's|judul2|$(cat deletejudul2.txt)|g' -e 's|judulstr
 # mysql
 echo "$(cat deletesql.txt)" | awk 1 ORS='' | sed '$a\' > deletemysql.sql
 # mysql query
-cd /home/hometiful/wordpress
+cd /home/domain/wordpress
 wp db query --allow-root < /home/wallpaper/attachment/deletemysql.sql
 # search & replace
 echo "wp search-replace 'http://www.domain.com/$(cat /home/wallpaper/attachment/deletejudul1strip.txt)/' 'http://www.domain.com/$(cat /home/wallpaper/attachment/id/title1.txt)/$(cat /home/wallpaper/attachment/deletejudul1strip.txt)/' wp_posts --allow-root" | bash -
