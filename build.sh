@@ -60,7 +60,7 @@ cat deletepar3a.txt | awk 1 ORS=' ' | sed -e 's/^/<div style="text-align: justif
 cat deletepar4a.txt | awk 1 ORS=' ' | sed -e 's/^/<div style="text-align: justify">/' -e 's/$/\<\/div\>/' > deletepar4.txt
 cat deletepar5a.txt | awk 1 ORS=' ' | sed -e 's/^/<div style="text-align: justify">/' -e 's/$/\<\/div\>/' > deletepar5.txt
 #upload youtube
-echo "youtube-upload --t998877665544332211itle=\"$(cat deletejudul1.txt)\" --privacy=unlisted /home/wallpaper/image/done/video/title.mp4 > deleteyoutube.txt" | sed 's/998877665544332211//g' | bash -
+wget  -qO- --header="Accept: text/html" --user-agent="Googlebot-Image/1.0" "http://www.bing.com/videos/search?scope=video&pq=title&sc=1-30&sp=-1&sk=&q=title&qft=+filterui:msite-youtube.com" | grep -o '<a href=['"'"'"][^"'"'"']*['"'"'"]' | grep 'watch?v' | sed -e 's/^<a href=["'"'"']//' -e 's/["'"'"']$//' -e 's/https:\/\/www.youtube.com\/watch?v=//g' | shuf -n 1 > deleteyoutube.txt
 echo "<style>.embed-container { position: relative; text-align: center; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe type=\"text/html\" width=\"560\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/$(cat deleteyoutube.txt)?autohide=1&rel=0&controls=0&modestbranding=1&disablekb=1&theme=light&enablejsapi=1\" frameborder=\"0\"></iframe></div>" >> deletepar5.txt
 # shuffle templates
 echo "cat template/$(shuf -i 1-6 -n 1)" | bash - | bash -
