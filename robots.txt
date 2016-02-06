@@ -11,6 +11,6 @@ Disallow: /*/feed/rss/$
 Disallow: /category/*
 Disallow: /xmlrpc.php
 
-Sitemap: http://www.domain.com/sitemap.xml
-Sitemap: http://www.domain.com/sitemap-image.xml
-Sitemap: http://www.domain.com/sitemap-mobile.xml
+Sitemap: http://www.domain.ekstension/sitemap.xml
+Sitemap: http://www.domain.ekstension/sitemap-image.xml
+Sitemap: http://www.domain.ekstension/sitemap-mobile.xml
