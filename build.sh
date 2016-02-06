@@ -59,14 +59,14 @@ tr -d '[:punct:]' < deletekeyword.txt > deletekeyword1.txt
 tr -cd '\11\12\40-\176' < deletekeyword1.txt > deletekeyword.txt
 awk --re-interval 'length > 1' < deletekeyword.txt > deletekeyword1.txt
 sed -i '/^$/d' deletekeyword1.txt
-sed -n 1p deletekeyword1.txt | sed 's|.*|\\<a href=\\"http:\\/\\/www\\.domain\\.com\\/image\\/title2\\" target=\\"_blank\\" \\>&\\<\\/a\\>|' > deletekeyword.txt
+sed -n 1p deletekeyword1.txt | sed 's|.*|\\<a href=\\"http:\\/\\/www\\.domain\\.ekstension\\/image\\/title2\\" target=\\"_blank\\" \\>&\\<\\/a\\>|' > deletekeyword.txt
 sed -n '1!p' deletekeyword1.txt | sed '/^$/d' >> deletekeyword.txt
 awk 1 ORS=', ' < deletekeyword.txt > deletekeyword2.txt
 sed -i 's/  / /g' deletekeyword2.txt
 sed -e 's/,,/,/g' -e 's/, ,/,/g' -e 's/,,/,/g' -e 's/ , /, /g' deletekeyword2.txt | sed 's/.$//' | sed 's/.$//' > deletetags1.txt
 # kelola judul image lain
 sed -n 1p deletejudul3strip.txt | sed 's/-/ /g' > deletejudul31.txt
-echo "cat deletejudul31.txt | sed 's|.*|\\\<a href=\\\"http:\\\/\\\/www\\\.domain\\\.com\\\/$(cat deletejudul1strip.txt)\\\/$(sed -n 1p deletejudul3strip.txt)\\\" target=\\\"_blank\\\"\\>&\\\<\\\/a\\\>|' > deletejudul32.txt" | bash -
+echo "cat deletejudul31.txt | sed 's|.*|\\\<a href=\\\"http:\\\/\\\/www\\\.domain\\\.ekstension\\\/$(cat deletejudul1strip.txt)\\\/$(sed -n 1p deletejudul3strip.txt)\\\" target=\\\"_blank\\\"\\>&\\\<\\\/a\\\>|' > deletejudul32.txt" | bash -
 sed -n '1!p' deletejudul3strip.txt | sed '/^$/d' | sed 's/-/ /g' >> deletejudul32.txt
 awk 1 ORS=', ' < deletejudul32.txt > deletejudul31.txt
 sed -i 's/  / /g' deletejudul31.txt
@@ -87,7 +87,7 @@ cat deletekeyword1.txt | sed '/^$/d' > deletekeyword.txt
 awk 1 ORS=', ' < deletekeyword.txt > deletekeyword1.txt
 sed -i 's/  / /g' deletekeyword1.txt
 sed -e 's/,,/,/g' -e 's/, ,/,/g' -e 's/,,/,/g' -e 's/ , /, /g' deletekeyword1.txt | sed 's/.$//' | sed 's/.$//' > deletetags2.txt
-echo "exiftool -Title=\"$(cat deletejudul2.txt) - $(cat deletejudul1.txt)\" -Author=\"$(cat deleteauthor1.txt)\" -Description=\"The picture/image of $(cat deletejudul2.txt) - $(cat deletejudul1.txt)\" -Keyword=\"$(cat deletejudul2.txt), $(cat deletejudul1.txt), $(cat deletetags2.txt)\" -Copyright=\"Source http://www.domain.com/image/title2\" done/title1/title2" | bash -
+echo "exiftool -Title=\"$(cat deletejudul2.txt) - $(cat deletejudul1.txt)\" -Author=\"$(cat deleteauthor1.txt)\" -Description=\"The picture/image of $(cat deletejudul2.txt) - $(cat deletejudul1.txt)\" -Keyword=\"$(cat deletejudul2.txt), $(cat deletejudul1.txt), $(cat deletetags2.txt)\" -Copyright=\"Source http://www.domain.ekstension/image/title2\" done/title1/title2" | bash -
 # sitemap
 echo "cat data/sitemap | sed -e 's|judul1|$(< \deletejudul1strip.txt)|g' -e 's|judul2|$(< \deletejudul2strip.txt)|g' -e 's|tanggal|$(< \deletetanggal.txt)|g' -e 's|waktu|$(< \deletewaktu.txt)|g' >> sitemap-attachment.xml" | bash -
 # sql file 1
@@ -109,7 +109,7 @@ echo "$(cat deletesql.txt)" | awk 1 ORS='' | sed '$a\' > deletemysql.sql
 cd /home/domain/wordpress
 wp db query --allow-root < /home/wallpaper/attachment/deletemysql.sql
 # search & replace
-echo "wp search-replace 'http://www.domain.com/$(cat /home/wallpaper/attachment/deletejudul1strip.txt)/' 'http://www.domain.com/$(cat /home/wallpaper/attachment/id/title1.txt)/$(cat /home/wallpaper/attachment/deletejudul1strip.txt)/' wp_posts --allow-root" | bash -
+echo "wp search-replace 'http://www.domain.ekstension/$(cat /home/wallpaper/attachment/deletejudul1strip.txt)/' 'http://www.domain.ekstension/$(cat /home/wallpaper/attachment/id/title1.txt)/$(cat /home/wallpaper/attachment/deletejudul1strip.txt)/' wp_posts --allow-root" | bash -
 # delete & clear history
 cd /home/wallpaper/attachment
 find . -maxdepth 1 -type f -name "delete*" -delete
