@@ -109,9 +109,12 @@ echo "$(cat deletesql.txt)" | awk 1 ORS='' | sed '$a\' > deletemysql.sql
 cd /home/www/domain
 wp db query --allow-root < /home/wallpaper/attachment/deletemysql.sql
 # search & replace
-echo "wp search-replace 'http://www.domain.ekstension/$(cat /home/wallpaper/attachment/deletejudul1strip.txt)/' 'http://www.domain.ekstension/$(cat /home/wallpaper/attachment/id/title1.txt)/$(cat /home/wallpaper/attachment/deletejudul1strip.txt)/' wp_posts --allow-root" | bash -
-# delete & clear history
+echo "wp post get $(cat /home/wallpaper/attachment/id/title1.txt) --field=post_date --allow-root | cut -c -7 | sed 's|-|/|g'" > /home/wallpaper/attachment/deletepostdate.txt" | bash -
+echo "wp search-replace 'http://www.domain.ekstension/$(cat /home/wallpaper/attachment/deletejudul1strip.txt).html/' 'http://www.domain.ekstension/$(cat /home/wallpaper/attachment/deletepostdate.txt)/$(cat /home/wallpaper/attachment/deletejudul1strip.txt).html/' wp_posts --allow-root" | bash -
 cd /home/wallpaper/attachment
+# sitemap
+echo "cat data/sitemap | sed -e 's|judul1|$(< \deletejudul1strip.txt)|g' -e 's|judul2|$(< \deletejudul2strip.txt)|g' -e 's|tanggal|$(< \deletetanggal.txt)|g' -e 's|waktu|$(< \deletewaktu.txt)|g' -e 's|postdate|$(< \deletepostdate.txt)|g' >> sitemap-attachment.xml" | bash -
+# delete & clear history
 find . -maxdepth 1 -type f -name "delete*" -delete
 find ./done/title1/* -maxdepth 1 -type f -name "*.jpg_original" -delete
 history -c
