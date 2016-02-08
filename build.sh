@@ -96,7 +96,7 @@ echo "cat data/sql1 | sed -e 's|author2|$(cat deleteauthor2.txt)|g' -e 's|tangga
 sed -i "s/'/''/g" deletedes.txt
 echo "cat deletedes.txt | awk 1 ORS='<br/>' | sed -e 's|judul1|$(cat deletejudul1.txt)|g' -e 's|judulstrip1|$(< \deletejudul1strip.txt)|g' -e 's|judul2|$(cat deletejudul2.txt)|g' -e 's|author1|$(cat deleteauthor1.txt)|g' -e 's|tanggalwaktu|$(cat deletetanggalwaktu.txt)|g' -e 's|panjang1|$(cat deletepanjang1.txt)|g' -e 's|lebar1|$(cat deletelebar1.txt)|g' -e 's|total1|$(cat deletetotal1.txt)|g' -e 's|judul3|$(cat deletejudul32.txt)|g' -e 's|tags1|$(cat deletetags1.txt)|g' >> deletesql.txt" | bash -
 # upload image
-cd /home/domain/wordpress
+cd /home/www/domain
 echo "wp media import /home/wallpaper/attachment/done/title1/title2 --post_id=$(cat /home/wallpaper/attachment/id/title1.txt) --porcelain --allow-root > /home/wallpaper/attachment/deleteid.txt" | bash -
 # generate thumbnail
 echo "wp media regenerate $(cat /home/wallpaper/attachment/deleteid.txt) --yes --allow-root" | bash -
@@ -106,7 +106,7 @@ echo "cat data/sql2 | sed -e 's|judul2|$(cat deletejudul2.txt)|g' -e 's|judulstr
 # mysql
 echo "$(cat deletesql.txt)" | awk 1 ORS='' | sed '$a\' > deletemysql.sql
 # mysql query
-cd /home/domain/wordpress
+cd /home/www/domain
 wp db query --allow-root < /home/wallpaper/attachment/deletemysql.sql
 # search & replace
 echo "wp search-replace 'http://www.domain.ekstension/$(cat /home/wallpaper/attachment/deletejudul1strip.txt)/' 'http://www.domain.ekstension/$(cat /home/wallpaper/attachment/id/title1.txt)/$(cat /home/wallpaper/attachment/deletejudul1strip.txt)/' wp_posts --allow-root" | bash -
