@@ -8,5 +8,3 @@ Disallow: /wp-content/themes/
 Disallow: /xmlrpc.php
 
 Sitemap: http://www.domain.ekstension/sitemap.xml
-Sitemap: http://www.domain.ekstension/sitemap-image.xml
-Sitemap: http://www.domain.ekstension/sitemap-mobile.xml
