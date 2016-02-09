@@ -59,14 +59,14 @@ tr -d '[:punct:]' < deletekeyword.txt > deletekeyword1.txt
 tr -cd '\11\12\40-\176' < deletekeyword1.txt > deletekeyword.txt
 awk --re-interval 'length > 1' < deletekeyword.txt > deletekeyword1.txt
 sed -i '/^$/d' deletekeyword1.txt
-sed -n 1p deletekeyword1.txt | sed 's|.*|\\<a href=\\"http:\\/\\/www\\.domain\\.ekstension\\/title2\\" target=\\"_blank\\" \\>&\\<\\/a\\>|' > deletekeyword.txt
+sed -n 1p deletekeyword1.txt | sed 's|.*|\\<a href=\\"http:\\/\\/www\\.domain\\.ekstension\\/wp-content\\/uploads\\/title2\\" target=\\"_blank\\" \\>&\\<\\/a\\>|' > deletekeyword.txt
 sed -n '1!p' deletekeyword1.txt | sed '/^$/d' >> deletekeyword.txt
 awk 1 ORS=', ' < deletekeyword.txt > deletekeyword2.txt
 sed -i 's/  / /g' deletekeyword2.txt
 sed -e 's/,,/,/g' -e 's/, ,/,/g' -e 's/,,/,/g' -e 's/ , /, /g' deletekeyword2.txt | sed 's/.$//' | sed 's/.$//' > deletetags1.txt
 # kelola judul image lain
 sed -n 1p deletejudul3strip.txt | sed 's/-/ /g' > deletejudul31.txt
-echo "cat deletejudul31.txt | sed 's|.*|\\\<a href=\\\"http:\\\/\\\/www\\\.domain\\\.ekstension\\\/$(cat deletejudul1strip.txt)\\\/$(sed -n 1p deletejudul3strip.txt)\\\" target=\\\"_blank\\\"\\>&\\\<\\\/a\\\>|' > deletejudul32.txt" | bash -
+echo "cat deletejudul31.txt | sed 's|.*|\\\<a href=\\\"http:\\\/\\\/www\\\.domain\\\.ekstension\\\/$(cat deletejudul1strip.txt).html\\\/$(sed -n 1p deletejudul3strip.txt)\\\" target=\\\"_blank\\\"\\>&\\\<\\\/a\\\>|' > deletejudul32.txt" | bash -
 sed -n '1!p' deletejudul3strip.txt | sed '/^$/d' | sed 's/-/ /g' >> deletejudul32.txt
 awk 1 ORS=', ' < deletejudul32.txt > deletejudul31.txt
 sed -i 's/  / /g' deletejudul31.txt
