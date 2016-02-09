@@ -109,7 +109,7 @@ echo "$(cat deletesql.txt)" | awk 1 ORS='' | sed '$a\' > deletemysql.sql
 cd /home/www/domain
 wp db query --allow-root < /home/wallpaper/attachment/deletemysql.sql
 # search & replace
-echo "wp post get $(cat /home/wallpaper/attachment/id/title1.txt) --field=post_date --allow-root | cut -c -7 | sed 's|-|/|g'" > /home/wallpaper/attachment/deletepostdate.txt" | bash -
+echo "wp post get $(cat /home/wallpaper/attachment/id/title1.txt) --field=post_date --allow-root | cut -c -7 | sed 's|-|/|g' > /home/wallpaper/attachment/deletepostdate.txt" | bash -
 echo "wp search-replace 'http://www.domain.ekstension/$(cat /home/wallpaper/attachment/deletejudul1strip.txt).html/' 'http://www.domain.ekstension/$(cat /home/wallpaper/attachment/deletepostdate.txt)/$(cat /home/wallpaper/attachment/deletejudul1strip.txt).html/' wp_posts --allow-root" | bash -
 cd /home/wallpaper/attachment
 # sitemap
