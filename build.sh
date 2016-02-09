@@ -76,7 +76,7 @@ exiftool -s3 -ImageWidth done/title1/title2 > deletepanjang1.txt
 exiftool -s3 -ImageHeight done/title1/title2 > deletelebar1.txt
 # shuffle author
 echo "$(shuf -n 1 data/author.txt)" | sed 's/.*/\L&/; s/[a-z]*/\u&/g' > deleteauthor1.txt
-cat deleteauthor1.txt | sed -e 's/Leeedwardjoon/1/g' -e 's/Milley/2/g' -e 's/Martha/3/g' -e 's/Edward/4/g' -e 's/Samuel/5/g' -e 's/Daniel/6/g' -e 's/Cason/7/g' -e 's/Vandiver/8/g' -e 's/Teresa/9/g' -e 's/Collins/10/g' -e 's/Carole/11/g' -e 's/Tomlin/12/g' -e 's/Sharoon/13/g' -e 's/Issac/14/g' -e 's/Samantha/15/g' -e 's/Turner/16/g' > deleteauthor2.txt
+cat deleteauthor1.txt | sed -e 's/Milley/2/g' -e 's/Martha/3/g' -e 's/Edward/4/g' -e 's/Samuel/5/g' -e 's/Daniel/6/g' -e 's/Cason/7/g' -e 's/Vandiver/8/g' -e 's/Teresa/9/g' -e 's/Collins/10/g' -e 's/Carole/11/g' -e 's/Tomlin/12/g' -e 's/Sharoon/13/g' -e 's/Issac/14/g' -e 's/Samantha/15/g' -e 's/Turner/16/g' > deleteauthor2.txt
 # shuffle tanggal dan waktu
 echo "$(shuf -i 2012-2015 -n 1)-$(shuf -i 1-12 -n 1 | sed 's/.*/0&/' | tail -c 3)-$(shuf -i 1-28 -n 1 | sed 's/.*/0&/' | tail -c 3)" > deletetanggal.txt
 echo "$(shuf -i 1-23 -n 1 | sed 's/.*/0&/' | tail -c 3):$(shuf -i 1-59 -n 1 | sed 's/.*/0&/' | tail -c 3):$(shuf -i 1-59 -n 1 | sed 's/.*/0&/' | tail -c 3)" > deletewaktu.txt
