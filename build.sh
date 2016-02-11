@@ -21,7 +21,7 @@ else
   sed -n '1p' < deletetitle1.txt > deletetitle.txt
   echo "echo \$(cat deletetitle.txt) | sed -e 's/&amp/-and-/g' -e 's/&/-and-/g' -e 's/ä/a/g' -e 's/ö/o/g' -e 's/ü/u/g' -e 's/[+_,;: (){}]/-/g' -e 's/--/-/g' -e 's/\[/-/g'  -e 's/\]/-/g' | tr -d '\041-\047' | tr -d '\052' | tr -d '\056-\057' | tr -d '\074-\100' | tr -d '\134' | tr -d '\136' | tr -d '\140' | tr -d '\174' | tr -d '\176' | sed -e 's/--/-/g' -e 's/^-*//g' -e 's/-*$//g' > deletetitle2.txt" | bash -
   #Scrape image
-  echo "curl -A 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0' -O '$(< \deleteimage.txt)' --max-time 15" | bash -
+  echo "curl -A 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0, Googlebot-Image/1.0' -O '$(< \deleteimage.txt)' --max-time 15" | bash -
   echo $(($RANDOM % 1000)) > deletenumber.txt
   for f in *.jpg; do mv -- "$f" `echo $f | sed -e 's/&amp/-and-/g' -e 's/&/-and-/g' -e 's/ä/a/g' -e 's/ö/o/g' -e 's/ü/u/g' -e 's/[+_,;: (){}]/-/g' -e 's/--/-/g' -e 's/\[/-/g'  -e 's/\]/-/g' | tr -d '\041-\047' | tr -d '\052' | tr -d '\056-\057' | tr -d '\074-\100' | tr -d '\134' | tr -d '\136' | tr -d '\140' | tr -d '\174' | tr -d '\176' | sed -e 's/--/-/g' -e 's/jpg/.jpg/g' -e 's/^-*//g' -e 's/-.jpg//g' -e 's/.jpg/-/g' -e 's/-*$/.jpg/g'`; done
   for f in *.JPG; do mv -- "$f" `echo $f | sed -e 's/&amp/-and-/g' -e 's/&/-and-/g' -e 's/ä/a/g' -e 's/ö/o/g' -e 's/ü/u/g' -e 's/[+_,;: (){}]/-/g' -e 's/--/-/g' -e 's/\[/-/g'  -e 's/\]/-/g' | tr -d '\041-\047' | tr -d '\052' | tr -d '\056-\057' | tr -d '\074-\100' | tr -d '\134' | tr -d '\136' | tr -d '\140' | tr -d '\174' | tr -d '\176' | sed -e 's/--/-/g' -e 's/JPG/.JPG/g' -e 's/^-*//g' -e 's/-.JPG//g' -e 's/.JPG/-/g' -e 's/-*$/.JPG/g'`; done
