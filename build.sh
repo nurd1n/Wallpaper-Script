@@ -98,8 +98,6 @@ echo "cat deletedes.txt | awk 1 ORS='<br/>' | sed -e 's|judul1|$(cat deletejudul
 # upload image
 cd /home/www/domain
 echo "wp media import /home/wallpaper/attachment/done/title1/title2 --post_id=$(cat /home/wallpaper/attachment/id/title1.txt) --porcelain --allow-root > /home/wallpaper/attachment/deleteid.txt" | bash -
-# generate thumbnail
-echo "wp media regenerate $(cat /home/wallpaper/attachment/deleteid.txt) --yes --allow-root" | bash -
 # sql file 2
 cd /home/wallpaper/attachment
 echo "cat data/sql2 | sed -e 's|judul2|$(cat deletejudul2.txt)|g' -e 's|judulstrip2|$(cat deletejudul2strip.txt)|g' -e 's|gantiparent|$(cat id/title1.txt)|g' -e 's|gantiid|$(cat deleteid.txt)|g' >> deletesql.txt" | bash -
