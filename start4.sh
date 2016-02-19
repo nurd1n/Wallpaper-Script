@@ -1,0 +1,2 @@
+for a in $(find ./* -type d ! -name 'image' ! -name 'video' ! -name 'video2' | cut -c 3-); do echo "mv $a \\\$(echo $a | sed 's/.*/\$(printf "new\\\\nbest\\\\ntop\\\\nnew+best\\\\nnew+top\\\\nbest+new\\\\ntop+new\\\\namazing\\\\nwonderful\\\\ntop+best\\\\nbest+top" | shuf -n 1)+&+\$(date +%Y)/')" | sed 's/.*/echo \\\"&\\\"/' | sed 's/.*/echo "&"/' | bash - | bash - | bash - ;done
+find ./* -type d ! -name 'image' ! -name 'video' ! -name 'video2' | cut -c 3- > asin.txt
