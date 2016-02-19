@@ -50,3 +50,4 @@ fi
  else
   clear
 fi
+echo "asin" >> reportdone.txt
