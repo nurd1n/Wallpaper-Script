@@ -117,3 +117,4 @@ find . -maxdepth 1 -type f -name "delete*" -delete
 find ./done/title1/* -maxdepth 1 -type f -name "*.jpg_original" -delete
 history -c
 clear
+echo "title1;title2" >> reportdone.txt
