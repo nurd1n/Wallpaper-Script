@@ -42,7 +42,7 @@ else
   find ./done/asin/* -wholename "*.jpg" -size -15k -delete
   find ./done/asin/* -not -empty -type f -printf '%s\n' | sort -rn | uniq -d | xargs -I{} -n1 find ./done/asin/* -type f -size {}c -print0 | xargs -0 md5sum | sort | uniq -w32 --all-repeated=separate | cut -c 37- | sed -n '1!p' | xargs shred -v -n 25 -u -z
   echo "$(cat deleteimage.txt)" >> urlimage.txt
-  find . -maxdepth 1 -type f ! -name "*.sh" ! -name "url" ! -name "urlimage.txt" ! -name "urlsudah" ! -name "*.py" -delete
+  find . -maxdepth 1 -type f ! -name "*.sh" ! -name "url" ! ! -name "reportdone.txt" ! -name "urlimage.txt" ! -name "urlsudah" ! -name "*.py" -delete
   find . -maxdepth 1 -type f -name "delete*" -delete
   history -c
   clear
