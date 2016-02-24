@@ -1,5 +1,5 @@
 mkdir done/asin
-if [ $(find done/asin -type f | wc -l) -lt "20" ]; then
+if [ $(find done/asin -type f | wc -l) -lt "11" ]; then
   for f in done/asin/*.jpg; do 
   if [ $(exiftool -s3 -ImageWidth "$f") -z "$VAR" ]; then
   rm -f "$f"
