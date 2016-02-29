@@ -38,7 +38,7 @@ else
   cd done/asin
   for f in *.jpg; do echo "mv -- $f \$(echo $f | sed 's/^-*//')" | bash -; done
   cd -
-  for f in done/asin/*.jpg; do mv -- $f $(echo $f | sed -e 's/.jpg//g' -e 's/done\/asin\///g' -e 's/\./-/g' -e 's/_/-/g' -e 's/[+_,;: (){}]/-/g' -e 's/---/-/' -e 's/---/-/' -e 's/--/-/' -e 's/--/-/' -e 's/--/-/' | cut -c -180 | tr -cd '[[:alnum:]]._-' | sed 's/.*/done\/asin\/&.jpg/') ; done
+  for f in done/asin/*.jpg; do mv -- $f $(echo $f | sed -e 's/.jpg//g' -e 's/done\/asin\///g' -e 's/\./-/g' -e 's/_/-/g' -e 's/[+_,;: (){}]/-/g' -e 's/---/-/' -e 's/---/-/' -e 's/--/-/' -e 's/--/-/' -e 's/--/-/' | cut -c -180 | tr -cd '[[:alnum:]]-' | sed 's/.*/done\/asin\/&.jpg/') ; done
   find ./done/asin/* -wholename "*.jpg" -size -15k -delete
   find ./done/asin/* -not -empty -type f -printf '%s\n' | sort -rn | uniq -d | xargs -I{} -n1 find ./done/asin/* -type f -size {}c -print0 | xargs -0 md5sum | sort | uniq -w32 --all-repeated=separate | cut -c 37- | sed -n '1!p' | xargs shred -v -n 25 -u -z
   echo "$(cat deleteimage.txt)" >> urlimage.txt
