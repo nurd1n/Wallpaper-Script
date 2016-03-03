@@ -67,7 +67,7 @@ echo "cat template/$(shuf -i 1-6 -n 1)" | bash - | bash -
 # shuffle category
 echo "$(shuf -n 1 data/category.txt)" > deletecategory1.txt
 # scrape tags from ask.com
-cat ask.py | sed 's/deleteask/title/g' > delete.py
+echo "cat ask.py | sed 's/deleteask/$(echo title | sed 's|+2016||g')/g' > delete.py" | bash -
 python delete.py > deletekeyword.txt
 sed -i 's/&amp/and/g' deletekeyword.txt
 sed -i 's/&/and/g' deletekeyword.txt
