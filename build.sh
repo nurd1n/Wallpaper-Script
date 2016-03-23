@@ -22,7 +22,7 @@ done
 # tambah clear di line 5
 sed -e "5 a <p style='clear: both' />" -e "10 a <p style='clear: both' />" -e "15 a <p style='clear: both' />" -e "20 a <p style='clear: both' />" -e "$ a <p style='clear: both' />" deletegallery.html > deletegallery2.html
 # tambah awalan dan akhiran serta ganti new line dengan br
-echo "awk 'FNR==1{print \"<div id='gallery-1'><center><h2>Picture gallery of $(cat deletejudul1.txt)</h2></center>\"}{print}' deletegallery2.html | sed '$ a </div>' | tr '\n' ' ' > deletegallery.html" | bash -
+echo "awk 'FNR==1{print \"<div id='gallery-1'><center><h2>$(cat deletejudul1.txt)</h2></center>\"}{print}' deletegallery2.html | sed '$ a </div>' | tr '\n' ' ' > deletegallery.html" | bash -
 # spin article
 echo "cat spin/par1/$(shuf -i 1-5 -n 1)" > deletepar.txt
   echo "$(cat deletepar.txt)/1 | shuf -n 1 >> deletepar1a.txt" | bash -
