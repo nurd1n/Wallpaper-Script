@@ -1,9 +1,9 @@
 #delete empty folder
 find ./image/* -type d -empty -exec rmdir {} \;
 #folder, untuk judul artikel
-find ./image/* -type d | cut -c 9- > /home/wallpaper/artikel/data/folder.txt
+find ./image/* -type d | cut -c 9- > /home/wallpaperdomainekstension/artikel/data/folder.txt
 ./isifolder.sh
 #total isi untuk attachment
-find ./image/*/* -type f | cut -c 9- | sed 's/\//;/g' > /home/wallpaper/attachment/data/folder.txt
+find ./image/*/* -type f | cut -c 9- | sed 's/\//;/g' > /home/wallpaperdomainekstension/attachment/data/folder.txt
 #pindah folder gambar ke folder don di attachment
-mv image/* /home/wallpaper/attachment/done
+mv image/* /home/wallpaperdomainekstension/attachment/done
