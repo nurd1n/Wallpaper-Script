@@ -112,7 +112,7 @@ echo "UPDATE wp_posts SET post_content = replace(post_content,\"http://www.domai
 wp db query --allow-root < /home/wallpaper/attachment/deletemysql.sql
 cd /home/wallpaper/attachment
 # sitemap
-echo "cat data/sitemap | sed -e 's|judul1|$(< \deletejudul1strip.txt)|g' -e 's|judul2|$(< \deletejudul2strip.txt)|g' -e 's|tanggal|$(< \deletetanggal.txt)|g' -e 's|waktu|$(< \deletewaktu.txt)|g' -e 's|postdate|$(< \deletepostdate.txt)|g' >> sitemap-attachment.xml" | bash -
+echo "cat data/sitemap | sed -e 's|judul1|$(< \deletejudul1strip.txt)|g' -e 's|judul2|$(< \deletejudul2strip.txt)|g' -e 's|tanggal|$(< \deletetanggal.txt)|g' -e 's|waktu|$(< \deletewaktu.txt)|g' -e 's|postid|$(cat /home/wallpaper/attachment/id/title1.txt)|g' >> sitemap-attachment.xml" | bash -
 # delete & clear history
 find . -maxdepth 1 -type f -name "delete*" -delete
 find ./done/title1/* -maxdepth 1 -type f -name "*.jpg_original" -delete
