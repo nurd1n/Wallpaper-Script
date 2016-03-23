@@ -89,8 +89,6 @@ awk 1 ORS=', ' < deletekeyword.txt > deletekeyword1.txt
 sed -i 's/  / /g' deletekeyword1.txt
 sed -e 's/,,/,/g' -e 's/, ,/,/g' -e 's/,,/,/g' -e 's/ , /, /g' deletekeyword1.txt | sed 's/.$//' | sed 's/.$//' > deletetags2.txt
 echo "exiftool -Title=\"$(cat deletejudul2.txt) - $(cat deletejudul1.txt)\" -Author=\"$(cat deleteauthor1.txt)\" -Description=\"The picture/image of $(cat deletejudul2.txt) - $(cat deletejudul1.txt)\" -Keyword=\"$(cat deletejudul2.txt), $(cat deletejudul1.txt), $(cat deletetags2.txt)\" -Copyright=\"Source http://www.domain.ekstension/image/title2\" done/title1/title2" | bash -
-# sitemap
-echo "cat data/sitemap | sed -e 's|judul1|$(< \deletejudul1strip.txt)|g' -e 's|judul2|$(< \deletejudul2strip.txt)|g' -e 's|tanggal|$(< \deletetanggal.txt)|g' -e 's|waktu|$(< \deletewaktu.txt)|g' >> sitemap-attachment.xml" | bash -
 # sql file 1
 echo "cat data/sql1 | sed -e 's|author2|$(cat deleteauthor2.txt)|g' -e 's|tanggal|$(cat deletetanggal.txt)|g' -e 's|waktu|$(cat deletewaktu.txt)|g' >> deletesql.txt" | bash -
 # input description
